@@ -1,6 +1,7 @@
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.io.IOException;
 
 public class syncStocks {
 	
@@ -31,6 +32,16 @@ public class syncStocks {
 	}
 
 	private static void syncData(Connection c) {
+		
+		pullStockData(); //start by making sure we are up to date
+		
+		//get list of saved symbols
+		
+		//loop through each symbol and check for latest entry
+		
+		//try to unpackDay() and addDayToDB() for every day since latest entry in db
+		
+		//done!
 
 	}
 	
@@ -38,7 +49,18 @@ public class syncStocks {
 
 	}
 	
+	private static void addDayToDB() {
+		
+	}
+	
 	private static void pullStockData() {
+		//execute the git submodule update command to get the latest from pystockdata
+		String cmd = "git submodule update --recursive --remote";
+		try {
+			Runtime.getRuntime().exec(cmd);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }
