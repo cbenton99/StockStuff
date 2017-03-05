@@ -27,7 +27,12 @@ public class ButtonPanel extends JPanel {
 		
 		for (int index = 0; index < trends.size(); index++) {
 			buttons[index] = new JButton(trends.get(index));
-			buttons[index].addActionListener(new ButtonListener());
+			if (trends.get(index).equals("SYNC DATA")) {
+				buttons[index].addActionListener(new SyncListener());
+			}
+			else {
+				buttons[index].addActionListener(new ButtonListener());
+			}
 			
 			buttons[index].setPreferredSize(BUTTON_DIM);
 			buttons[index].setMargin(new Insets(5,5,5,5));
@@ -43,6 +48,15 @@ public class ButtonPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			
 			System.out.println("button works");
+			
+		}
+		
+	}//end ButtonListener
+	
+	private class SyncListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			System.out.println("sync works");
 			
 		}
 		
@@ -65,6 +79,7 @@ public class ButtonPanel extends JPanel {
 		trends.add("Gap DOWN");
 		trends.add("Gaps UP");
 		trends.add("Gaps DOWN");
+		trends.add("SYNC DATA");
 		
 	}//end populateTrendTypes
 	
