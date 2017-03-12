@@ -22,7 +22,7 @@ public class syncStocks {
 				System.exit(0);
 			}
 			
-			System.out.println("Opened git puldatabase successfully, starting sync.");
+			System.out.println("Opened Stock Stuff db successfully, starting sync.");
 
 			syncData(c); // sync that data!
 
@@ -46,6 +46,12 @@ public class syncStocks {
 	}
 	
 	private static void unpackDay() {
+		
+		//unpack individual day's tarball
+		
+		//check symbols.txt to make sure we still exist
+		
+		//
 
 	}
 	
@@ -54,8 +60,8 @@ public class syncStocks {
 	}
 	
 	private static void pullStockData() {
-		//execute the git submodule update command to get the latest from pystockdata
-		String cmd = "git submodule update --recursive --remote";
+		//execute the git pull on pystock-data
+		String cmd = "git pull pystock-data/ pystock-data/";
 		try {
 			Runtime.getRuntime().exec(cmd);
 		} catch (IOException e) {
